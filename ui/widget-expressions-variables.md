@@ -115,7 +115,7 @@ Variables defined in an `oh-context` will take precedence over standard variable
 
 ## Item Expression Shortcuts
 
-The `@` symbol can be used in front of an Item name string as a shortcut to the `displayState` from the `items` dictionary with a fallback to the raw state:
+The `@` symbol can be used in front of an Item name string as a shortcut to the `displayState` from the `items` dictionary with a fallback to the raw state. Note that the item name must be enclosed in quotes.
 
 ```javascript
 footer: =@'Switch1'

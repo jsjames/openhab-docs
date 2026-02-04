@@ -246,7 +246,7 @@ Object expression can also be used to simulate a `switch` control statement.
 
 The most common flow control statement in expressions is the [conditional (ternary) operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator), which is very efficient for selecting from two options based on a single boolean criterion.
 If you have a list of possible options, you can combine multiple ternary operators together, but this grows cumbersome very quickly.
-For example, if there is an HVAC with a mode Item that can be set to `heat`, `cool`, `auto`, and `off` modes, it requires 4 nested ternary operators to set a component's background color to match the current HVAC mode (with a fallback option if the Item has some other state, e.g. `null`).
+For example, if there is an HVAC with a mode Item that can be set to `heat`, `cool`, `auto`, and `off` modes, it requires 4 nested ternary operators to set a component's background color to match the current HVAC mode (with a fallback option if the Item has some other state, e.g. `null`). Note, due to YAML limitations, ternary expressions must either have no space between the : and surrounding elements OR must be enclosed in quotations.
 
 ```javascript
 background: =(@@hvacModeItem == 'heat')?'orange':(@@hvacModeItem == 'cool')?'blue':(@@hvacModeItem == 'auto')?'green':(@@hvacModeItem == 'off')?'white':'red'
@@ -317,10 +317,10 @@ Use a filled `lightbulb` icon but only if the state of the Item passed in the pr
 icon: =(@@props.item === 'ON') ? 'f7:lightbulb_fill' : 'f7:lightbulb'
 ```
 
-Stacked ternary statements to translate the state of Item `xxx` to a description:
+Stacked ternary statements to translate the state of Item `xxx` to a description (note: non-quoted ternary expressions must not have spaces surrounding the ':'):
 
 ```javascript
-=(items.xxx.state === '0') ? 'Off' : (items.xxx.state === '1') ? 'Heat' : (items.xxx.state === '11') ? 'Economy Heat' : (items.xxx.state === '15') ? 'Full Power': (items.xxx.state === '31') ? 'Manual' : 'Not Set'
+=(items.xxx.state === '0')?'Off':(items.xxx.state === '1')?'Heat':(items.xxx.state === '11')?'Economy Heat':(items.xxx.state === '15')?'Full Power':(items.xxx.state === '31')?'Manual':'Not Set'
 ```
 
 Do the same using an object and the Item state shortcut:
